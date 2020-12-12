@@ -1,26 +1,29 @@
 package object;
 
+import java.time.LocalDateTime;
+//import java.time.format.DateTimeFormatter;
 
 public class Tarantula implements Comparable<Tarantula> {
 	
 	String nameId;
-	int size;
-	int lastFeedDate;
-	public Tarantula(String nameId, int size, int lastFeedDate) {
+	double size;
+	LocalDateTime lastFeedDate;
+	public Tarantula(String nameId, double size) {
 		super();
 		this.nameId = nameId;
 		this.size = size;
-		this.lastFeedDate = lastFeedDate;
+		setLastFeedDate();
 	}
-	public int getLastFeedDate() {
+	public LocalDateTime getLastFeedDate() {
 		return lastFeedDate;
 	}
-	public void setLastFeedDate(int lastFeedDate) {
-		this.lastFeedDate = lastFeedDate;
+	public void setLastFeedDate() {	
+		   LocalDateTime now = LocalDateTime.now();  
+		this.lastFeedDate = now;
 	}
 	//can be called to update size
-	public void setSize(int s) {
-		this.size = s;
+	public void growTarantula() {
+		this.size = this.size*1.3;
 	}
 	
 	//prioritized for feeding first if it is smaller
