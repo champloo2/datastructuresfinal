@@ -15,14 +15,19 @@ public class Tarantula implements Comparable<Tarantula> {
 		this.size = size;
 		setLastFeedDate();
 	}
+	
+	
 	public LocalDateTime getLastFeedDate() {
 		return lastFeedDate;
 	}
+	//the feed time is automatically set to the current date/time
 	public void setLastFeedDate() {	
 		   LocalDateTime now = LocalDateTime.now();  
 		this.lastFeedDate = now;
 	}
 	//can be called to update size
+	//Since tarantulas grow when they molt, it is assumed
+	//that with each molt, it grows by 30%, an alternative to having the user input the new size
 	public void growTarantula() {
 		this.size = this.size*1.3;
 	}
