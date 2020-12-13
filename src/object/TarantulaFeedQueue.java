@@ -33,7 +33,9 @@ public class TarantulaFeedQueue {
 		whatToDo();
 	}
 	
-
+	//besides enqueing, This is the only public methods used in the driver
+	//all other methods come back to this one to ask the user
+	//what they want to do
 	public void whatToDo() {
 		System.out.println("What do you want to do?"+"\n"  +"'s' to make a sale" +"\n"  + "'f' to feed" +"\n"  + "'q' to move sale item back to queue" +"\n"  + "any other input to update a size");
 		//Scanner myObj = new Scanner(System.in);
@@ -85,6 +87,16 @@ public class TarantulaFeedQueue {
 		System.out.print("Tarantula #" + t.nameId + " has grown from " + t.size + " inches ");
 		t.growTarantula();
 		System.out.println("to " + t.size + " inches.");
+		
+		//re-make the priority Q since the comparable value
+		//has been updated
+		PriorityQueue<Tarantula> tempQ = new PriorityQueue<Tarantula>(); 
+		for(Tarantula tf: feederPQ) {
+			tempQ.add(tf);
+		}
+		this.feederPQ = tempQ;
+		
+		
 		printInventory();
 		whatToDo();
 	}
