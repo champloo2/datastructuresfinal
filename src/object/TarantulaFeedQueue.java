@@ -24,6 +24,8 @@ public class TarantulaFeedQueue {
 		Tarantula tToFeed = feederPQ.poll();
 		tToFeed.setLastFeedDate();
 		saleList.add(tToFeed);
+		System.out.println("moving tarantula #" + tToFeed.nameId  +" to sales list");
+		printInventory();
 	}
 	
 	
@@ -31,19 +33,28 @@ public class TarantulaFeedQueue {
 	public void moveToFeedQ(Tarantula t) {
 		feederPQ.add(t);
 		saleList.remove(t);
+		System.out.println("Tarantula #"+ t.nameId + " moved back to feeding queue and removed from sales list");
+		printInventory();
 	}
 	
 	//be able to make a sale
-	
-	//maybe re-make this class renamed
+	public void makeASale(Tarantula t) {
+		saleList.remove(t);
+		System.out.println("Tarantula #" +t.nameId+ " has been sold");
+		printInventory();
+	}
+
 	
 	//update tarantula size
 	//re-order priority queue
 	public void updateSize(Tarantula t) {
+		System.out.print("Tarantula #" + t.nameId + " has grown from " + t.size + " inches ");
 		t.growTarantula();
+		System.out.println("to " + t.size + " inches.");
+		printInventory();
 	}
 	
-	public void printInventory() {
+	private void printInventory() {
 		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"); 
 		System.out.println("printing feed queue");
 		for(Tarantula t: feederPQ) {
@@ -54,7 +65,8 @@ public class TarantulaFeedQueue {
 		for(Tarantula t: saleList) {
 			System.out.println(t.printTarantulaData());
 		}
+		System.out.println();
 	}
-	//needs to check both ffeeder and sales list for the spider
+	
 
 }
