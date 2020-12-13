@@ -2,6 +2,7 @@ package object;
 
 import java.time.LocalDateTime;
 //import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatter;
 
 public class Tarantula implements Comparable<Tarantula> {
 	
@@ -29,11 +30,16 @@ public class Tarantula implements Comparable<Tarantula> {
 	//prioritized for feeding first if it is smaller
 	@Override
 	public int compareTo(Tarantula t) {
-		if (size < t.size)
+		if (this.size < t.size)
 			return 1;
-		else if(size > t.size)
+		else if(this.size > t.size)
 			return -1;
 		else return 0;
+	}
+	
+	public String printTarantulaData() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		return "item ID: " + this.nameId + " size: " + this.size + " last feed date: " + dtf.format(this.lastFeedDate);
 	}
 	
 	

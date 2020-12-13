@@ -1,6 +1,6 @@
 package object;
 
-import java.time.format.DateTimeFormatter;
+//import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 //import java.util.Queue;
@@ -43,11 +43,16 @@ public class TarantulaFeedQueue {
 		t.growTarantula();
 	}
 	
-	public void printFeedingQueue() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"); 
-		System.out.println("print feed queue");
+	public void printInventory() {
+		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"); 
+		System.out.println("printing feed queue");
 		for(Tarantula t: feederPQ) {
-			System.out.println("item ID: " + t.nameId + " size: " + t.size + " last feed date: " + dtf.format(t.lastFeedDate));
+			System.out.println(t.printTarantulaData());
+			//System.out.println("item ID: " + t.nameId + " size: " + t.size + " last feed date: " + dtf.format(t.lastFeedDate));
+		}
+		System.out.println("printing sale list");
+		for(Tarantula t: saleList) {
+			System.out.println(t.printTarantulaData());
 		}
 	}
 	//needs to check both ffeeder and sales list for the spider
