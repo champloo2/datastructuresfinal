@@ -123,7 +123,7 @@ public class TarantulaFeedQueue {
 		}
 		else if (action.equals("feedq")) {
 			//Scanner feedScan = new Scanner(System.in);
-			for(Tarantula t: feederPQ) {
+			for(Tarantula t: saleList) {
 				System.out.println(t.printTarantulaData()+": move this to the feeding queue?");
 				  // Create a Scanner object
 			    userInput = myObj.nextLine();
