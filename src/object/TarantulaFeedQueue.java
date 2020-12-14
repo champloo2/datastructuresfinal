@@ -21,17 +21,7 @@ public class TarantulaFeedQueue {
 		feederPQ.add(t);
 		allTs.add(t);
 	}
-	
-	//method to feed spider
-	//once spider is fed, add it to sell stack
-	private void feedAndStack() {
-		Tarantula tToFeed = feederPQ.poll();
-		tToFeed.setLastFeedDate();
-		saleList.add(tToFeed);
-		System.out.println("moving tarantula #" + tToFeed.nameId  +" to sales list");
-		printInventory();
-		whatToDo();
-	}
+
 	
 	//besides enqueing, This is the only public methods used in the driver
 	//all other methods come back to this one to ask the user
@@ -57,6 +47,16 @@ public class TarantulaFeedQueue {
 		//myObj.close();
 	}
 	
+	//method to feed spider
+	//once spider is fed, add it to sell stack
+	private void feedAndStack() {
+		Tarantula tToFeed = feederPQ.poll();
+		tToFeed.setLastFeedDate();
+		saleList.add(tToFeed);
+		System.out.println("moving tarantula #" + tToFeed.nameId  +" to sales list");
+		printInventory();
+		whatToDo();
+	}
 	
 	//be able to move tarantulas stack back to queue
 	private void moveToFeedQ() {
@@ -120,7 +120,6 @@ public class TarantulaFeedQueue {
 			    	break;
 			    }
 			}
-			//sellScan.close();
 		}
 		else if (action.equals("feedq")) {
 			//Scanner feedScan = new Scanner(System.in);
@@ -134,10 +133,8 @@ public class TarantulaFeedQueue {
 			    }
 				
 			}
-			//feedScan.close();
 		}
 		else {
-			//Scanner updateScan = new Scanner(System.in);
 			for(Tarantula t: allTs) {
 				System.out.println(t.printTarantulaData() + ": update size?");
 				userInput = myObj.nextLine();

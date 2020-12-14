@@ -36,9 +36,9 @@ public class Tarantula implements Comparable<Tarantula> {
 	@Override
 	public int compareTo(Tarantula t) {
 		if (this.size < t.size)
-			return 1;
-		else if(this.size > t.size)
 			return -1;
+		else if(this.size > t.size)
+			return 1;
 		else return 0;
 	}
 	
